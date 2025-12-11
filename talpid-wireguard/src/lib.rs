@@ -906,7 +906,7 @@ impl WireguardMonitor {
     fn get_pre_tunnel_routes<'a>(
         iface_name: &str,
         config: &'a Config,
-        #[allow(unused_variables)] userspace_wireguard: bool,
+        #[expect(unused_variables)] userspace_wireguard: bool,
     ) -> impl Iterator<Item = RequiredRoute> + 'a {
         // e.g. utun4
         let gateway_node = talpid_routing::Node::device(iface_name.to_string());
@@ -948,7 +948,7 @@ impl WireguardMonitor {
     fn get_post_tunnel_routes<'a>(
         iface_name: &str,
         config: &'a Config,
-        #[allow(unused_variables)] userspace_wireguard: bool,
+        #[expect(unused_variables)] userspace_wireguard: bool,
     ) -> impl Iterator<Item = RequiredRoute> + 'a {
         let (node_v4, node_v6) = Self::get_tunnel_nodes(iface_name, config);
         let iter = config
@@ -1172,6 +1172,7 @@ pub enum TunnelError {
 }
 
 #[cfg(target_os = "linux")]
+#[expect(dead_code)]
 fn will_nm_manage_dns() -> bool {
     use talpid_dbus::network_manager::NetworkManager;
 

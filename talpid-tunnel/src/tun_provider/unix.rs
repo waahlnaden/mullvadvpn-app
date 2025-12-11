@@ -270,6 +270,7 @@ mod tun08_imp {
         /// Open a tunnel using the current tunnel config.
         pub fn open_tun(&mut self) -> Result<UnixTun, Error> {
             let mut tunnel_device = {
+                #[cfg_attr(not(target_os = "linux"), expect(unused_mut))]
                 let mut builder = TunnelDeviceBuilder::default();
                 #[cfg(target_os = "macos")]
                 builder.config.platform_config(|cfg| {
