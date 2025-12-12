@@ -65,8 +65,7 @@ mod tun05_imp {
             let mut tunnel_device = {
                 #[cfg_attr(not(target_os = "linux"), expect(unused_mut))]
                 let mut builder = TunnelDeviceBuilder::default();
-                #[cfg(target_os = "linux")]
-                {
+                if cfg!(target_os = "linux") {
                     builder.enable_packet_information();
                     if let Some(ref name) = self.config.name {
                         builder.name(name);
