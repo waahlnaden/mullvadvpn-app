@@ -97,7 +97,7 @@
     "develop:vite": "vite",
     "test": "cross-env NODE_ENV=test mocha --reporter spec --require ts-node/register --require \"test/unit/setup.ts\" \"test/unit/*.spec.ts\"",
     "type-check": "tsc --noEmit",
-    "update-translations": "node scripts/extract-translations",
+    "update-translations": "node scripts/extract-translations.cjs",
     "pack:mac": "node tasks/pack-mac.cjs",
     "pack:win": "node tasks/pack-windows.cjs",
     "pack:linux": "node tasks/pack-linux.cjs"
